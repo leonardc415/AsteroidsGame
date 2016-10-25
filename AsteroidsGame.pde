@@ -1,4 +1,4 @@
-//your variable declarations here
+SpaceShip one = new SpaceShip();//your variable declarations here
 public void setup() 
 {
   //your code here
@@ -14,10 +14,10 @@ class SpaceShip extends Floater
   public void setY(int y){myCenterY = y;}
   public int getY(){return (int)myCenterY;}
   public void setDirectionX(double x){myDirectionX = x;}
-  public int getDirectionX(){return (int)myDirectionX;}
-  public void setDirectionY(double y); 
-  public int getDirectionY(){return (int)myDirectionY;}
-  public void setPointDirection(int degrees);
+  public double getDirectionX(){return (double)myDirectionX;}
+  public void setDirectionY(double y){myDirectionY = y;} 
+  public double getDirectionY(){return (double)myDirectionY;}
+  public void setPointDirection(int degrees){myPointDirection = degrees;}
   public int getPointDirection(){return (int)myPointDirection;}
 }
 
@@ -39,7 +39,7 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   abstract public void setDirectionY(double y);   
   abstract public double getDirectionY();   
   abstract public void setPointDirection(int degrees);   
-  abstract public double getPointDirection(); 
+  abstract public int getPointDirection(); 
 
   //Accelerates the floater in the direction it is pointing (myPointDirection)   
   public void accelerate (double dAmount)   
