@@ -2,13 +2,25 @@ SpaceShip one = new SpaceShip();//your variable declarations here
 public void setup() 
 {
   //your code here
+  size(500,500);
 }
+
 public void draw() 
 {
   //your code here
+  one.show();
 }
+
 class SpaceShip extends Floater  
 {   
+  public SpaceShip(){
+    corners= 4;
+    xCorners = new int[corners];
+    yCorners = new int[corners];
+    xCorners[0] = -8;
+    yCorners[1] = -8;
+    
+  }
   public void setX(int x){myCenterX = x;}
   public int getX(){return (int)myCenterX;}
   public void setY(int y){myCenterY = y;}
