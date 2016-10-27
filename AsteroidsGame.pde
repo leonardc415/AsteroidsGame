@@ -18,7 +18,13 @@ class SpaceShip extends Floater
     xCorners = new int[corners];
     yCorners = new int[corners];
     xCorners[0] = -8;
-    yCorners[1] = -8;
+    yCorners[0] = -8;
+    xCorners[1] =   ;
+    yCorners[1] =   ;
+    xCorners[2] =   ;
+    yCorners[2] =   ;
+    xCorners[3] =   ;
+    yCorners[3] =   ;
     
   }
   public void setX(int x){myCenterX = x;}
