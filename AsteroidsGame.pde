@@ -15,18 +15,21 @@ class SpaceShip extends Floater
 {   
   public SpaceShip(){
     corners= 4;
+    myColor = new int[color];  //initialize var
+    myCenterX = new int[x];
+    myCenterY = new int[y];
     xCorners = new int[corners];
     yCorners = new int[corners];
-    xCorners[0] = -8;
+    xCorners[0] = -8;    //Spaceship
     yCorners[0] = -8;
-    xCorners[1] =   ;
-    yCorners[1] =   ;
-    xCorners[2] =   ;
-    yCorners[2] =   ;
-    xCorners[3] =   ;
-    yCorners[3] =   ;
-    
+    xCorners[1] = 16;
+    yCorners[1] =  0;
+    xCorners[2] = -8;
+    yCorners[2] =  8;
+    xCorners[3] = -2;
+    yCorners[3] =  0;
   }
+
   public void setX(int x){myCenterX = x;}
   public int getX(){return (int)myCenterX;}
   public void setY(int y){myCenterY = y;}
@@ -41,7 +44,7 @@ class SpaceShip extends Floater
 
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
-  protected int corners;  //the number of corners, a triangular floater has 3   
+  protected int corners;   
   protected int[] xCorners; 
   protected int[] yCorners;   
   protected int myColor;
@@ -59,29 +62,50 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   abstract public void setPointDirection(int degrees);   
   abstract public int getPointDirection(); 
 
+
+
   //Accelerates the floater in the direction it is pointing (myPointDirection)   
   public void accelerate (double dAmount)   
-  {          
+  { 
     //convert the current direction the floater is pointing to radians    
     double dRadians =myPointDirection*(Math.PI/180);     
     //change coordinates of direction of travel    
     myDirectionX += ((dAmount) * Math.cos(dRadians));    
     myDirectionY += ((dAmount) * Math.sin(dRadians));       
   }   
+
+
   public void rotate (int nDegreesOfRotation)   
   {     
     //rotates the floater by a given number of degrees    
     myPointDirection+=nDegreesOfRotation;   
   }   
-  public void move ()   //move the floater in the current direction of travel
+
+
+
+//move the floater in the current direction of travel
+  public void move ()   
   {      
     //change the x and y coordinates by myDirectionX and myDirectionY       
-    myCenterX += myDirectionX;    
-    myCenterY += myDirectionY;     
+  myCenterX += myDirectionX;
+  myCenterY += myCenterY;
+
+    if(myDirectionX > width)
+    {
+      myCenterX = 0;
+    }
+    else if(myCenterX < 0){
+      myCenterX = width;
+    }
+    if(myCenterY > height){
+      myCenterY = 0;
+    }
+    else if(myCenterY < 0){
+      myCenterY = height;
+  }  
 
     //wrap around screen    
-    if(myCenterX >width)
-    {     
+    if(myCenterX >width) {     
       myCenterX = 0;    
     }    
     else if (myCenterX<0)
@@ -97,7 +121,10 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
       myCenterY = height;    
     }   
   }   
-  public void show ()  //Draws the floater at the current position  
+
+
+//Draws the floater at the current position 
+  public void show ()   
   {             
     fill(myColor);   
     stroke(myColor);    
@@ -114,5 +141,5 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     }   
     endShape(CLOSE);  
   }   
-} 
 
+}
