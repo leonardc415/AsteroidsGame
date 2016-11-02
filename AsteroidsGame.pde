@@ -15,9 +15,9 @@ class SpaceShip extends Floater
 {   
   public SpaceShip(){
     corners= 4;
-    myColor = new int[color];  //initialize var
-    myCenterX = new int[x];
-    myCenterY = new int[y];
+    myColor = random(255);  //initialize var
+    myCenterX = int(x);
+    myCenterY = int(y);
     xCorners = new int[corners];
     yCorners = new int[corners];
     xCorners[0] = -8;    //Spaceship
