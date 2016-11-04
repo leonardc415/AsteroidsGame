@@ -15,9 +15,12 @@ class SpaceShip extends Floater
 {   
   public SpaceShip(){
     corners= 4;
-    myColor = random(255);  //initialize var
-    myCenterX = int(x);
-    myCenterY = int(y);
+    myColor = int(random(255));  //initialize var
+    myCenterX = getX();
+    myCenterY = getY();
+    myDirectionX = getDirectionX();
+    myDirectionY = getDirectionY();
+    myPointDirection = getPointDirection();
     xCorners = new int[corners];
     yCorners = new int[corners];
     xCorners[0] = -8;    //Spaceship
@@ -121,7 +124,15 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
       myCenterY = height;    
     }   
   }   
-
+  
+  /*public void keyPressed()
+    {
+      if(key == "w"){
+        one.accelerate(2)};
+      if(key == "a"){
+        one.rotate()
+      }
+    }*/
 
 //Draws the floater at the current position 
   public void show ()   
