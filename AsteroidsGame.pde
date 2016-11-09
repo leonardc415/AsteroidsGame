@@ -8,19 +8,40 @@ public void setup()
 public void draw() 
 {
   //your code here
+  background(1);
   one.show();
+  one.move();
 }
+
+public void keyPressed()
+{
+  if(key == 'a'){
+    one.rotate(-10);
+    }
+  if(key == 'd'){
+   one.rotate(10);
+    }
+  if(key == 'w'){
+    one.accelerate(1);
+    }
+  if(key == 's'){
+    one.accelerate(-1);
+   }
+   /*if(key == 'de'){
+     one.
+   }*/
+} 
 
 class SpaceShip extends Floater  
 {   
   public SpaceShip(){
     corners= 4;
-    myColor = int(random(255));  //initialize var
-    myCenterX = getX();
-    myCenterY = getY();
-    myDirectionX = getDirectionX();
-    myDirectionY = getDirectionY();
-    myPointDirection = getPointDirection();
+    myColor = int(255);  //initialize var
+    myCenterX = 250;
+    myCenterY = 250;
+    myDirectionX = 0;
+    myDirectionY = 0;
+    myPointDirection = 360;
     xCorners = new int[corners];
     yCorners = new int[corners];
     xCorners[0] = -8;    //Spaceship
@@ -91,21 +112,7 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   {      
     //change the x and y coordinates by myDirectionX and myDirectionY       
   myCenterX += myDirectionX;
-  myCenterY += myCenterY;
-
-    if(myDirectionX > width)
-    {
-      myCenterX = 0;
-    }
-    else if(myCenterX < 0){
-      myCenterX = width;
-    }
-    if(myCenterY > height){
-      myCenterY = 0;
-    }
-    else if(myCenterY < 0){
-      myCenterY = height;
-  }  
+  myCenterY += myDirectionY;
 
     //wrap around screen    
     if(myCenterX >width) {     
@@ -124,15 +131,7 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
       myCenterY = height;    
     }   
   }   
-  
-  /*public void keyPressed()
-    {
-      if(key == "w"){
-        one.accelerate(2)};
-      if(key == "a"){
-        one.rotate()
-      }
-    }*/
+
 
 //Draws the floater at the current position 
   public void show ()   
