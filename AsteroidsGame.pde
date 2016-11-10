@@ -1,8 +1,14 @@
+Stars [] space;
 SpaceShip one = new SpaceShip();//your variable declarations here
 public void setup() 
 {
   //your code here
   size(500,500);
+  space = new Stars[50];
+  for(int i=0; i<space.legnth; i++)
+  {
+      space[i] = new Stars();
+  }
 }
 
 public void draw() 
@@ -11,6 +17,23 @@ public void draw()
   background(1);
   one.show();
   one.move();
+}
+
+class Stars 
+{
+  double theX, theY;
+  int myColor;
+  Star()
+    {
+      myColor = color(255, 255, 255);
+      theX = (int)(Math.random()*500);
+      theY = (int)(Math.random()*500);
+    }
+  public void show()
+  {
+    fill(myColor);
+    ellipse((float)theX, (float)theY, 5, 5);
+  }
 }
 
 public void keyPressed()
@@ -27,8 +50,9 @@ public void keyPressed()
   if(key == 's'){
     one.accelerate(-1);
    }
-   /*if(key == 'de'){
-     one.
+   /*if(key == 'e'){
+     one.rotate(Math.random()*20-10);
+
    }*/
 } 
 
