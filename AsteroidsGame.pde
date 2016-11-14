@@ -1,11 +1,11 @@
 Stars [] space;
-SpaceShip one = new SpaceShip();//your variable declarations here
+SpaceShip one = new SpaceShip();
 public void setup() 
 {
   //your code here
   size(500,500);
   space = new Stars[50];
-  for(int i=0; i<space.legnth; i++)
+  for(int i=0; i<space.length; i++)
   {
       space[i] = new Stars();
   }
@@ -23,12 +23,21 @@ class Stars
 {
   double theX, theY;
   int myColor;
-  Star()
+  Stars()
     {
-      myColor = color(255, 255, 255);
+      myColor = int(255);
       theX = (int)(Math.random()*500);
       theY = (int)(Math.random()*500);
-    }
+      dSpeed = Math.random()*5;
+      dTheta = Math.random()*9* Math.PI;
+     }
+
+    public void move()
+  {
+    theX = theX + Math.cos(dTheta)*dSpeed;
+    theY = theY + Math.sin(dTheta)*dSpeed;
+  }
+
   public void show()
   {
     fill(myColor);
