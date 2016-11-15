@@ -51,7 +51,7 @@ class Stars
 public void keyPressed()
 {
   if(key == 'a'){
-    one.rotate(one.rotate(-1));
+    one.rotate(one.accelerate(-1));
     }
   if(key == 'd'){
    one.rotate(1);
