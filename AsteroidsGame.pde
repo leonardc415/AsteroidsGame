@@ -17,6 +17,9 @@ public void draw()
   background(1);
   one.show();
   one.move();
+  for(int i=0; i<space.length; i++){
+    space[i].show();
+    }
 }
 
 class Stars 
