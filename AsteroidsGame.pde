@@ -1,18 +1,18 @@
 Stars [] space;
 SpaceShip one = new SpaceShip();
-Asteroids [] rocks;
+//Asteroids [] rocks;
 public void setup() 
 {
   //your code here
   size(500,500);
   space = new Stars[100];
-  for(int i=0; i<space.length; i++)
+  for(int i=0; i<space.length; i++)   //make stars
   {
       space[i] = new Stars();
   }
-  for(int i=0; i<rocks.length; i++){
+ /* for(int i=0; i<rocks.length; i++){
       rocks[i] = new Asteroids();
-  }
+  }*/
 }
 
 
@@ -22,10 +22,12 @@ public void draw()
   background(1);
   one.show();
   one.move();
+
   for(int i=0; i<space.length; i++){      //shows stars
     space[i].show();
   }
 }
+
 
 
 class Stars 
@@ -47,8 +49,11 @@ class Stars
 
 class Asteroids extends Floater
 {
+  private int turn;
+
   public Asteroids(){
-    corners = 4;
+    corners = 8;
+    turn = 
     myColor = int(50);
     myCenterX = (int)(Math.random()*500);
     myCenterY = (int)(Math.random()*500);
@@ -57,16 +62,26 @@ class Asteroids extends Floater
     myPointDirection = (int)(Math.random()*360);
     xCorners = new int[corners];
     yCorners = new int[corners];
-    xCorners[0] = -8;    //Spaceship
-    yCorners[0] = -8;
-    xCorners[1] = 16;
-    yCorners[1] =  0;
-    xCorners[2] = -8;
-    yCorners[2] =  8;
-    xCorners[3] = -2;
-    yCorners[3] =  0;
+    xCorners[0] = 0;    //asteroid
+    yCorners[0] = 7;
+    xCorners[1] = 5;
+    yCorners[1] = 4;
+    xCorners[2] = 9;
+    yCorners[2] = 4;
+    xCorners[3] = 12;
+    yCorners[3] = 0;
+    xCorners[4] = 4;
+    yCorners[4] = -6;
+    xCorners[5] = -5;
+    yCorners[5] = -8;
+    xCorners[6] = -12;
+    yCorners[6] = -1;
+    xCorners[7] = -10;
+    yCorners[7] = 6;
   }
 
+  public void setTurn(int x){turn = x;}
+  public int getTurn(){return turn;}
   public void setX(int x){myCenterX = x;}
   public int getX(){return (int)myCenterX;}
   public void setY(int y){myCenterY = y;}
@@ -80,26 +95,6 @@ class Asteroids extends Floater
 
 }
 
-
-public void keyPressed()
-{
-  if(key == 'a'){
-    one.rotate(-10);
-    }
-  if(key == 'd'){
-   one.rotate(10);
-    }
-  if(key == 'w'){
-    one.accelerate(1);
-    }
-  if(key == 's'){
-    one.accelerate(-1);
-   }
-   /*if(key == 'e'){
-     one.rotate(Math.random()*20-10);
-
-   }*/
-} 
 
 
 
@@ -124,8 +119,6 @@ class SpaceShip extends Floater
     xCorners[3] = -2;
     yCorners[3] =  0;
   }
-
-
   public void setX(int x){myCenterX = x;}
   public int getX(){return (int)myCenterX;}
   public void setY(int y){myCenterY = y;}
@@ -137,6 +130,7 @@ class SpaceShip extends Floater
   public void setPointDirection(int degrees){myPointDirection = degrees;}
   public int getPointDirection(){return (int)myPointDirection;}
 }
+
 
 
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
@@ -159,6 +153,31 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   abstract public void setPointDirection(int degrees);   
   abstract public int getPointDirection(); 
 
+
+
+
+
+
+
+  public void keyPressed()
+{
+  if(key == 'a'){
+    one.rotate(-10);
+    }
+  if(key == 'd'){
+   one.rotate(10);
+    }
+  if(key == 'w'){
+    one.accelerate(0.08);
+    }
+  if(key == 's'){
+    one.accelerate(-0.08);
+   }
+   /*if(key == 'e'){
+     one.rotate(Math.random()*20-10);
+
+   }*/
+} 
 
 
   //Accelerates the floater in the direction it is pointing (myPointDirection)   
