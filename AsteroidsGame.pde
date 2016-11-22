@@ -53,7 +53,7 @@ class Asteroids extends Floater
 
   public Asteroids(){
     corners = 8;
-    turn = 
+    turn = (int)(Math.random()*5)-5;                               //left off here(turning asteroids);sets asteroid turn speed
     myColor = int(50);
     myCenterX = (int)(Math.random()*500);
     myCenterY = (int)(Math.random()*500);
@@ -80,8 +80,8 @@ class Asteroids extends Floater
     yCorners[7] = 6;
   }
 
-  public void setTurn(int x){turn = x;}
-  public int getTurn(){return turn;}
+  public void setTurn(int x){turn = x;}      
+  public int getTurn(){return (int)turn;}
   public void setX(int x){myCenterX = x;}
   public int getX(){return (int)myCenterX;}
   public void setY(int y){myCenterY = y;}
@@ -92,6 +92,29 @@ class Asteroids extends Floater
   public double getDirectionY(){return (double)myDirectionY;}
   public void setPointDirection(int degrees){myPointDirection = degrees;}
   public int getPointDirection(){return (int)myPointDirection;}
+
+  public void move(){
+    myCenterX += myDirectionX;
+    myCenterY += myDirectionY;
+
+    //wrap around screen    
+    if(myCenterX >width) {     
+      myCenterX = 0;    
+    }    
+    else if (myCenterX<0)
+    {     
+      myCenterX = width;    
+    }    
+    if(myCenterY >height)
+    {    
+      myCenterY = 0;    
+    }   
+    else if (myCenterY < 0)
+    {     
+      myCenterY = height;    
+    } 
+    //add turning   
+  }
 
 }
 
