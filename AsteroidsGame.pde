@@ -1,6 +1,6 @@
 Stars [] space;
 SpaceShip one = new SpaceShip();
-//Asteroids [] rocks;
+Asteroids [] rocks;
 public void setup() 
 {
   //your code here
@@ -10,9 +10,10 @@ public void setup()
   {
       space[i] = new Stars();
   }
- /* for(int i=0; i<rocks.length; i++){
-      rocks[i] = new Asteroids();
-  }*/
+  rocks = new Asteroids[10];
+  for(int nI=0; nI<rocks.length; nI++){
+      rocks[nI] = new Asteroids();
+  }
 }
 
 
@@ -49,11 +50,16 @@ class Stars
 
 class Asteroids extends Floater
 {
-  private int turn;
+  private int rotSpeed;
+
+  public void turn(){   //asteroids slide 79+
+    super.move();
+
+  }
 
   public Asteroids(){
     corners = 8;
-    turn = (int)(Math.random()*5)-5;                               //left off here(turning asteroids);sets asteroid turn speed
+    rotSpeed = (int)(Math.random()*5)-2;                               //left off here(turning asteroids);sets asteroid turn speed
     myColor = int(50);
     myCenterX = (int)(Math.random()*500);
     myCenterY = (int)(Math.random()*500);
@@ -62,7 +68,7 @@ class Asteroids extends Floater
     myPointDirection = (int)(Math.random()*360);
     xCorners = new int[corners];
     yCorners = new int[corners];
-    xCorners[0] = 0;    //asteroid
+    xCorners[0] = 0;    
     yCorners[0] = 7;
     xCorners[1] = 5;
     yCorners[1] = 4;
@@ -80,8 +86,8 @@ class Asteroids extends Floater
     yCorners[7] = 6;
   }
 
-  public void setTurn(int x){turn = x;}      
-  public int getTurn(){return (int)turn;}
+  public void setrotSpeed(int x){rotSpeed = x;}      
+  public int getrotSpeed(){return (int)rotSpeed;}
   public void setX(int x){myCenterX = x;}
   public int getX(){return (int)myCenterX;}
   public void setY(int y){myCenterY = y;}
@@ -196,10 +202,10 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   if(key == 's'){
     one.accelerate(-0.08);
    }
-   /*if(key == 'e'){
-     one.rotate(Math.random()*20-10);
+   if(key == 'e'){
+     one.setX(Math.random()*500);
 
-   }*/
+   }
 } 
 
 
