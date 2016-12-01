@@ -5,12 +5,14 @@ public void setup()
 {
   //your code here
   size(500,500);
+
   space = new Stars[100];
   for(int i=0; i<space.length; i++)   //make stars
   {
       space[i] = new Stars();
   }
-  rocks = new Asteroids[10];
+
+  rocks = new Asteroids[20];
   for(int nI=0; nI<rocks.length; nI++){
       rocks[nI] = new Asteroids();
   }
@@ -23,12 +25,39 @@ public void draw()
   background(1);
   one.show();
   one.move();
-
+ 
   for(int i=0; i<space.length; i++){      //shows stars
     space[i].show();
   }
+  for(int i=0; i<rocks.length; i++){
+    rocks[i].show();
+    System.out.println(rocks[i].getY());
+  }
 }
 
+
+ public void keyPressed()
+{
+  if(key == 'a'){
+    one.rotate(-10);
+    }
+  if(key == 'd'){
+   one.rotate(10);
+    }
+  if(key == 'w'){
+    one.accelerate(0.2);
+    }
+  if(key == 's'){
+    one.accelerate(-0.2);
+   }
+   if(key == 'e'){
+     one.setX((int)(Math.random()*500));
+     one.setY((int)(Math.random()*500));
+     one.setPointDirection((int)(Math.random()*360));
+     one.setDirectionX(0);
+     one.setDirectionY(0);
+   }
+  }
 
 
 class Stars 
@@ -60,7 +89,7 @@ class Asteroids extends Floater
   public Asteroids(){
     corners = 8;
     rotSpeed = (int)(Math.random()*5)-2;                               //left off here(turning asteroids);sets asteroid turn speed
-    myColor = int(50);
+    myColor = color(178,34,34);
     myCenterX = (int)(Math.random()*500);
     myCenterY = (int)(Math.random()*500);
     myDirectionX = (int)(Math.random()*10-5);
@@ -183,30 +212,6 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   abstract public int getPointDirection(); 
 
 
-
-
-
-
-
-  public void keyPressed()
-{
-  if(key == 'a'){
-    one.rotate(-10);
-    }
-  if(key == 'd'){
-   one.rotate(10);
-    }
-  if(key == 'w'){
-    one.accelerate(0.08);
-    }
-  if(key == 's'){
-    one.accelerate(-0.08);
-   }
-   if(key == 'e'){
-     one.setX(Math.random()*500);
-
-   }
-} 
 
 
   //Accelerates the floater in the direction it is pointing (myPointDirection)   
