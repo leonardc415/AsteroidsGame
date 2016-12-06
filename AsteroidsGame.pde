@@ -14,7 +14,6 @@ public void setup()
 
 
   rocks = new Asteroids[15];
-  rocks = new Asteroids[20];
   for(int nI=0; nI<rocks.length; nI++){
       rocks[nI] = new Asteroids();
   }
