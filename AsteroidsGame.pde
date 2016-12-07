@@ -19,7 +19,6 @@ public void setup()
   }
 }
 
-
 public void draw() 
 {
   //your code here
