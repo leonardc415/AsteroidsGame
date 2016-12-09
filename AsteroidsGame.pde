@@ -32,7 +32,6 @@ public void draw()
   for(int i=0; i<rocks.length; i++){
     rocks[i].show();
     rocks[i].move();
-    System.out.println(rocks[i].getY());
   }
 }
 
